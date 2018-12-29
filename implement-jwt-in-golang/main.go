@@ -15,13 +15,13 @@ func main() {
 	log.Println("expiry : " + expire)
 
 	fmt.Println("")
-	fmt.Println("** Check Token and Get Data **")
+	fmt.Printf("** Check Token : %s and Get Data **\n", tokenString)
 	userCredential := &auth.UserCredential{}
 	token, userCredential, _ := auth.JWTValidateWithClaims(tokenString)
 	fmt.Printf("** token valid ? %t\n", token.Valid)
 	if token.Valid {
-		fmt.Println(string(userCredential.Email))
-		fmt.Println(string(userCredential.Name))
+		fmt.Println("Email : " + string(userCredential.Email))
+		fmt.Println("Name : " + string(userCredential.Name))
 	}
 
 }

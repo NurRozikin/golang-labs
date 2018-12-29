@@ -2,7 +2,6 @@ package auth
 
 import (
 	"fmt"
-	"log"
 	"time"
 
 	jwt "gopkg.in/dgrijalva/jwt-go.v3"
@@ -36,7 +35,6 @@ func CreateToken(email []byte, name []byte) (string, string) {
 }
 
 func JWTValidateWithClaims(requestToken string) (*jwt.Token, *UserCredential, error) {
-	log.Println("** JWT Validate **")
 	user := &UserCredential{}
 	token, err := jwt.ParseWithClaims(requestToken, user, func(token *jwt.Token) (interface{}, error) {
 		return JWTSignKey, nil
